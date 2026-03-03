@@ -1,0 +1,6 @@
+[[repos]]
+repo = "local"
+hooks = [
+  { id = "lint", name = "eslint", language = "system", entry = "bun run lint", pass_filenames = false, files = "\\.(ts|js)$" },
+  { id = "format-check", name = "prettier --check", language = "system", entry = "bun run format:check", pass_filenames = false, files = "\\.(ts|js|json)$" },
+]
