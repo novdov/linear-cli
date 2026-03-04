@@ -26,10 +26,10 @@ async function formatIssue(issue: Issue, includeComments: boolean) {
     assignee: assignee ? { id: assignee.id, name: assignee.name } : null,
     priority: issue.priority,
     labels: labels.nodes.map((l) => ({ id: l.id, name: l.name })),
+    branchName: issue.branchName,
   };
 
   if (includeComments) {
-    base.branchName = issue.branchName;
     const comments = await issue.comments();
     base.comments = await Promise.all(
       comments.nodes.map(async (c) => {
