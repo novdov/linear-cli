@@ -1,5 +1,5 @@
-import { getClient } from '../lib/client.js';
-import { outputJSON } from '../lib/output.js';
+import { getClient } from '../lib/client';
+import { outputJSON } from '../lib/output';
 
 export async function commentCreate(issueId: string, opts: { body: string }): Promise<void> {
   const client = getClient();

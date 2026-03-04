@@ -1,10 +1,10 @@
 import { Command } from 'commander';
-import { printHelp } from './lib/help.js';
-import { outputError } from './lib/output.js';
-import { authLogin, authLogout } from './commands/auth.js';
-import { teamList } from './commands/team.js';
-import { commentCreate } from './commands/comment.js';
-import { issueGet, issueList, issueCreate, issueUpdate } from './commands/issue.js';
+import { printHelp } from './lib/help';
+import { outputError } from './lib/output';
+import { authLogin, authLogout } from './commands/auth';
+import { teamList } from './commands/team';
+import { commentCreate } from './commands/comment';
+import { issueGet, issueList, issueCreate, issueUpdate } from './commands/issue';
 
 const KNOWN_SCOPES = ['auth', 'issue', 'comment', 'team'];
 

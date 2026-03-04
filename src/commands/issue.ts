@@ -1,13 +1,13 @@
 import type { Issue, LinearClient } from '@linear/sdk';
-import { getClient } from '../lib/client.js';
-import { outputJSON, outputError } from '../lib/output.js';
+import { getClient } from '../lib/client';
+import { outputJSON, outputError } from '../lib/output';
 import {
   resolveTeamId,
   resolveAssigneeId,
   resolveStateId,
   resolveLabelIds,
   resolveProjectId,
-} from '../lib/resolver.js';
+} from '../lib/resolver';
 
 async function formatIssue(issue: Issue, includeComments: boolean) {
   const [state, assignee, labels] = await Promise.all([
