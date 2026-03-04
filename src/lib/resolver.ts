@@ -1,5 +1,5 @@
 import type { LinearClient } from '@linear/sdk';
-import { outputError } from './output.js';
+import { outputError } from './output';
 
 export async function resolveTeamId(client: LinearClient, nameOrKey: string): Promise<string> {
   const teams = await client.teams();

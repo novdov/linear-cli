@@ -1,5 +1,5 @@
-import { saveApiKey, deleteApiKey } from '../lib/auth.js';
-import { outputJSON } from '../lib/output.js';
+import { saveApiKey, deleteApiKey } from '../lib/auth';
+import { outputJSON } from '../lib/output';
 
 export async function authLogin(apiKey: string): Promise<void> {
   await saveApiKey(apiKey);

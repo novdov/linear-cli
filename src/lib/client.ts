@@ -1,6 +1,6 @@
 import { LinearClient } from '@linear/sdk';
-import { getApiKey } from './auth.js';
-import { outputError } from './output.js';
+import { getApiKey } from './auth';
+import { outputError } from './output';
 
 export function getClient(): LinearClient {
   const apiKey = getApiKey();
