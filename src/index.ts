@@ -5,8 +5,9 @@ import { authLogin, authLogout } from './commands/auth';
 import { teamList } from './commands/team';
 import { commentCreate } from './commands/comment';
 import { issueGet, issueList, issueCreate, issueUpdate } from './commands/issue';
+import { labelList } from './commands/label';
 
-const KNOWN_SCOPES = ['auth', 'issue', 'comment', 'team'];
+const KNOWN_SCOPES = ['auth', 'issue', 'comment', 'team', 'label'];
 
 function hasHelp(args: string[]): boolean {
   return args.includes('--help') || args.includes('-h');
@@ -83,6 +84,9 @@ async function main() {
 
   const team = program.command('team');
   team.command('list').action(teamList);
+
+  const label = program.command('label');
+  label.command('list').option('--team <name>').action(labelList);
 
   try {
     await program.parseAsync(process.argv);
