@@ -26,7 +26,7 @@ Issue Get:
   linear issue get <id>
 
 Issue List:
-  linear issue list [--team <name>] [--assignee <name>] [--state <name>]
+  linear issue list [--team <name>] [--assignee <name>] [--state <name>] [--limit <number>]
 
 Issue Create (required: --team, --title):
   linear issue create --team <name> --title <text> [--description <text>]
@@ -44,7 +44,8 @@ Options:
   --state <name>       State name (e.g., "Done", "In Progress")
   --priority <0-4>     0=None, 1=Urgent, 2=High, 3=Normal, 4=Low
   --labels <a,b>       Comma-separated label names
-  --project <name>     Project name`;
+  --project <name>     Project name
+  --limit <number>     Max issues to return (default: 10)`;
 
 const HELP_COMMENT = `Usage: linear comment <command>
 
