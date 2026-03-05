@@ -5,6 +5,7 @@ Commands:
   issue    Manage issues
   comment  Manage comments
   team     Manage teams
+  label    Manage labels
 
 Run "linear <command> --help" for more information.`;
 
@@ -57,12 +58,24 @@ const HELP_TEAM = `Usage: linear team <command>
 Commands:
   list   List all teams`;
 
+const HELP_LABEL = `Usage: linear label <command> [options]
+
+Commands:
+  list [options]   List labels
+
+Label List:
+  linear label list [--team <name>]
+
+Options:
+  --team <name>   Filter by team name or key`;
+
 const helpMessages: Record<string, string> = {
   main: HELP_MAIN,
   auth: HELP_AUTH,
   issue: HELP_ISSUE,
   comment: HELP_COMMENT,
   team: HELP_TEAM,
+  label: HELP_LABEL,
 };
 
 export function printHelp(scope: string): void {
