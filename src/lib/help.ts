@@ -66,8 +66,11 @@ Commands:
 Label List:
   linear label list [--team <name>]
 
+Without --team, only workspace labels are shown.
+With --team, workspace labels and the team's labels are shown.
+
 Options:
-  --team <name>   Filter by team name or key`;
+  --team <name>   Include team labels along with workspace labels`;
 
 const helpMessages: Record<string, string> = {
   main: HELP_MAIN,
