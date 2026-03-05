@@ -57,6 +57,7 @@ interface ListOptions {
   team?: string;
   assignee?: string;
   state?: string;
+  limit?: string;
 }
 
 export async function issueList(opts: ListOptions): Promise<void> {
@@ -85,8 +86,10 @@ export async function issueList(opts: ListOptions): Promise<void> {
     filter.state = { id: { eq: stateId } };
   }
 
+  const first = opts.limit ? Number(opts.limit) : 10;
+
   const issues = await client.issues({
-    first: 50,
+    first,
     filter: Object.keys(filter).length > 0 ? filter : undefined,
   });
 

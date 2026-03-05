@@ -49,6 +49,7 @@ async function main() {
     .option('--team <name>')
     .option('--assignee <name>')
     .option('--state <name>')
+    .option('--limit <number>')
     .action(issueList);
   issue
     .command('create')
