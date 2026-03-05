@@ -9,15 +9,16 @@ interface ListOptions {
 export async function labelList(opts: ListOptions): Promise<void> {
   const client = getClient();
 
-  const filter: Record<string, unknown> = {};
-  if (opts.team) {
-    const teamId = await resolveTeamId(client, opts.team);
-    filter.team = { id: { eq: teamId } };
-  }
+  const filter: Record<string, unknown> = opts.team
+    ? {
+        or: [
+          { team: { null: true } },
+          { team: { id: { eq: await resolveTeamId(client, opts.team) } } },
+        ],
+      }
+    : { team: { null: true } };
 
-  const labels = await client.issueLabels({
-    filter: Object.keys(filter).length > 0 ? filter : undefined,
-  });
+  const labels = await client.issueLabels({ filter });
 
   outputJSON(labels.nodes.map((l) => ({ id: l.id, name: l.name })));
 }

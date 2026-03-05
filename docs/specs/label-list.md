@@ -12,8 +12,8 @@
 linear label list [--team <name>]
 ```
 
-- `--team` 옵션 없이 실행하면 전체 라벨 조회 (필터 없이 호출)
-- `--team` 옵션을 지정하면 해당 팀의 라벨만 조회
+- `--team` 옵션 없이 실행하면 workspace 라벨만 조회
+- `--team` 옵션을 지정하면 workspace 라벨 + 해당 팀 라벨 조회
 
 ### 페이지네이션
 
@@ -35,8 +35,8 @@ linear label list [--team <name>]
 - `src/commands/label.ts` 파일 생성
 - `src/lib/resolver.ts`의 `resolveTeamId`를 재사용하여 팀 이름/키를 ID로 변환
 - Linear SDK의 `client.issueLabels({ filter })` 사용
-  - 팀 필터: `{ filter: { team: { id: { eq: teamId } } } }`
-  - 전체 조회: 필터 없이 호출
+  - `--team` 없음: `{ filter: { team: { null: true } } }`
+  - `--team` 있음: `{ filter: { or: [{ team: { null: true } }, { team: { id: { eq: teamId } } }] } }`
 - `src/index.ts`에 `label` 스코프 등록
 - `src/lib/help.ts`에 label 도움말 추가
 
@@ -53,7 +53,7 @@ linear label list [--team <name>]
 
 ## 검증
 
-- `linear label list` 실행 시 전체 라벨이 JSON 배열로 출력되는지 확인
-- `linear label list --team <팀이름>` 실행 시 해당 팀 라벨만 출력되는지 확인
+- `linear label list` 실행 시 workspace 라벨만 JSON 배열로 출력되는지 확인
+- `linear label list --team <팀이름>` 실행 시 workspace 라벨 + 해당 팀 라벨이 출력되는지 확인
 - `linear label --help` 실행 시 도움말 출력 확인
 - 존재하지 않는 팀 이름 지정 시 에러 메시지 출력 확인
