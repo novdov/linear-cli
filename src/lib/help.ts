@@ -6,6 +6,7 @@ Commands:
   comment  Manage comments
   team     Manage teams
   label    Manage labels
+  project  Manage projects
 
 Run "linear <command> --help" for more information.`;
 
@@ -72,6 +73,11 @@ With --team, workspace labels and the team's labels are shown.
 Options:
   --team <name>   Include team labels along with workspace labels`;
 
+const HELP_PROJECT = `Usage: linear project <command>
+
+Commands:
+  list   List active projects`;
+
 const helpMessages: Record<string, string> = {
   main: HELP_MAIN,
   auth: HELP_AUTH,
@@ -79,6 +85,7 @@ const helpMessages: Record<string, string> = {
   comment: HELP_COMMENT,
   team: HELP_TEAM,
   label: HELP_LABEL,
+  project: HELP_PROJECT,
 };
 
 export function printHelp(scope: string): void {
