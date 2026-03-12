@@ -6,8 +6,9 @@ import { teamList } from './commands/team';
 import { commentCreate } from './commands/comment';
 import { issueGet, issueList, issueCreate, issueUpdate } from './commands/issue';
 import { labelList } from './commands/label';
+import { projectList } from './commands/project';
 
-const KNOWN_SCOPES = ['auth', 'issue', 'comment', 'team', 'label'];
+const KNOWN_SCOPES = ['auth', 'issue', 'comment', 'team', 'label', 'project'];
 
 function hasHelp(args: string[]): boolean {
   return args.includes('--help') || args.includes('-h');
@@ -87,6 +88,9 @@ async function main() {
 
   const label = program.command('label');
   label.command('list').option('--team <name>').action(labelList);
+
+  const project = program.command('project');
+  project.command('list').action(projectList);
 
   try {
     await program.parseAsync(process.argv);
